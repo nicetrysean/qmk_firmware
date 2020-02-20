@@ -15,6 +15,16 @@
  */
 #include QMK_KEYBOARD_H
 
+enum {
+  TD_PIPE_GRV = 0,
+  TD_LSFT_CAPSLOCK,
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_PIPE_GRV]  = ACTION_TAP_DANCE_DOUBLE(KC_PIPE, KC_GRV),
+  [TD_LSFT_CAPSLOCK]  = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPSLOCK),
+};
+
 enum layers {
     _QWERTY = 0,
     _LOWER,
@@ -38,10 +48,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-      KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
+      KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    TD(TD_PIPE_GRV),
       MT(MOD_LCTL,KC_ESC),     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-               KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), LT(_SYMBOLS,KC_BSPC), KC_RALT
+      KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TD(TD_LSFT_CAPSLOCK),
+               KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), KC_BSPC, KC_RALT
     ),
 /*
  * Lower layer
@@ -88,20 +98,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Symbols layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |                              |      |  }   |      |      |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |   ▽    |      |  [   |  {   |  (   |      |                              |      |   )  |   }  |   ]  |      |        |
+ * |   ▽    |      |  [   |  {   |  (   |      |                              |      |  )   |  }   |  -   |  =   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |   ▽    |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |    ▽   |
+ * |   ▽    |      |      |      |      |      |      |      |  |      |      |      |  ]   |      |      |      |    ▽   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |  ▽   |      |      |  ▽   |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_SYMBOLS] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-      KC_TRNS, _______, KC_LBRC, KC_LCBR, KC_LPRN, _______,                                     _______, KC_RPRN, KC_RCBR, KC_RBRC, _______, _______,
-      KC_TRNS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TRNS,
+      _______, _______, _______, _______, _______, _______,                                     _______, KC_RCBR, _______, _______, _______, _______,
+      KC_TRNS, _______, KC_LBRC, KC_LCBR, KC_LPRN, _______,                                     _______, KC_RPRN, KC_RCBR, KC_MINS, KC_EQL,  _______,
+      KC_TRNS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, _______, _______, _______, KC_TRNS,
                                  KC_TRNS, KC_TRNS, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 // /*
