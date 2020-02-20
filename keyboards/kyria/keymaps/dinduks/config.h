@@ -16,6 +16,9 @@
 
 #pragma once
 
+#undef ENCODER_RESOLUTION
+#define ENCODER_RESOLUTION 1
+
 #ifdef OLED_DRIVER_ENABLE
   #define OLED_DISPLAY_128X64
 #endif
