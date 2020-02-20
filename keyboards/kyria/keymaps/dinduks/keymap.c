@@ -17,12 +17,16 @@
 
 enum {
   TD_PIPE_GRV = 0,
-  TD_LSFT_CAPSLOCK,
+  TD_LBRC_RBRC,
+  TD_LCBR_RCBR,
+  TD_LPRN_RPRN,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_PIPE_GRV]  = ACTION_TAP_DANCE_DOUBLE(KC_PIPE, KC_GRV),
-  [TD_LSFT_CAPSLOCK]  = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPSLOCK),
+  [TD_LBRC_RBRC]  = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+  [TD_LCBR_RCBR]  = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
+  [TD_LPRN_RPRN]  = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
 };
 
 enum layers {
@@ -50,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT(
       KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    TD(TD_PIPE_GRV),
       MT(MOD_LCTL,KC_ESC),     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TD(TD_LSFT_CAPSLOCK),
+      KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_RSFT,KC_CAPS),
                KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), KC_BSPC, KC_RALT
     ),
 /*
@@ -110,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_SYMBOLS] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     _______, KC_RCBR, _______, _______, _______, _______,
-      KC_TRNS, _______, KC_LBRC, KC_LCBR, KC_LPRN, _______,                                     _______, KC_RPRN, KC_RCBR, KC_MINS, KC_EQL,  _______,
+      KC_TRNS, _______, TD(TD_LBRC_RBRC), TD(TD_LCBR_RCBR), TD(TD_LPRN_RPRN), _______,          _______, KC_RPRN, KC_RCBR, KC_MINS, KC_EQL,  _______,
       KC_TRNS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, _______, _______, _______, KC_TRNS,
                                  KC_TRNS, KC_TRNS, _______, _______, _______, _______, _______, _______, _______, _______
     ),
