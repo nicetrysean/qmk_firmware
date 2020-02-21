@@ -23,6 +23,7 @@ enum {
   TD_LCBR_RCBR,
   TD_LPRN_RPRN,
   TD_SCLN_COLN,
+  TD_COMM_CCEDILLE,
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -31,6 +32,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_LCBR_RCBR]  = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
   [TD_LPRN_RPRN]  = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
   [TD_SCLN_COLN]  = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+  [TD_COMM_CCEDILLE]  = ACTION_TAP_DANCE_DOUBLE(KC_COMM, RALT(KC_COMM)),
 };
 
 enum layers {
@@ -58,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
     KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    TD(TD_BSLS_GRV),
     MT(MOD_LCTL,KC_ESC),     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                      KC_H,    KC_J,    KC_K,    KC_L,    TD(TD_SCLN_COLN), KC_QUOT,
-    KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_RSFT,KC_CAPS),
+    KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    TD(TD_COMM_CCEDILLE), KC_DOT,  KC_SLSH, MT(MOD_RSFT,KC_CAPS),
              KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), LT(_SYMBOLS, KC_BSPC), KC_RALT
   ),
 
