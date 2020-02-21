@@ -1,4 +1,4 @@
-/* Copyright 2019 Samy Dindane <samy@dindane.com>
+/* Copyright 2020 Samy Dindane <samy@dindane.com>
  * Based upon the default Kyria configuration by Thomas Baart
  *
  * This program is free software: you can redistribute it and/or modify
@@ -153,7 +153,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 static void render_status(void) {
-  render_qmk_logo();
+  oled_write_P(PSTR("\n   H Y P E F U R Y\n"), false);
 
   oled_write_P(PSTR("\nKyria rev1.0\n\n"), false);
 

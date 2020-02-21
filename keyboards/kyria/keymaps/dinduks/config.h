@@ -1,4 +1,5 @@
-/* Copyright 2019 Thomas Baart <thomas@splitkb.com>
+/* Copyright 2020 Samy Dindane <samy@dindane.com>
+ * Based upon the default Kyria configuration by Thomas Baart
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
