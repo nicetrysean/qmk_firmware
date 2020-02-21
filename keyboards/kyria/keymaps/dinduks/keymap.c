@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,                  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    TD(TD_BSLS_GRV),
       MT(MOD_LCTL,KC_ESC),     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
       KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  _______, _______, _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, MT(MOD_RSFT,KC_CAPS),
-               KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), KC_BSPC, KC_RALT
+               KC_LALT, KC_LGUI, LT(_LOWER,KC_ENT), _______, _______, _______, _______, LT(_RAISE,KC_SPC), LT(_SYMBOLS, KC_BSPC), KC_RALT
     ),
 /*
  * Lower layer
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * |        |      |      |      |      |      |                              |      |  }   |      |      |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |   ▽    |      |  [   |  {   |  (   |      |                              |      |  )   |  }   |  -   |  =   |        |
+ * |   ▽    |      |  []  |  {}  |  ()  |      |                              |      |  )   |  }   |  -   |  =   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |   ▽    |      |      |      |      |      |      |      |  |      |      |      |  ]   |      |      |      |    ▽   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -139,10 +139,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                                  _______, KC_TRNS, _______, _______, KC_TRNS, _______, _______, _______, _______, _______
 //     ),
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _SYMBOLS);
-}
 
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
